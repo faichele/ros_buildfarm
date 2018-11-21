@@ -236,6 +236,10 @@ def configure_devel_job(
     - invoke the release/run_devel_job.py script
     """
     if config is None:
+        print('Config URL given: ' + config_url)
+        if config.find('://') == -1:
+            config_url = 'file://' + config_url
+        print('Config URL used : ' + config_url)
         config = get_config_index(config_url)
     if build_file is None:
         build_files = get_source_build_files(config, rosdistro_name)
