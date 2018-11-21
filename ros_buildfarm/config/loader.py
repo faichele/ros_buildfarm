@@ -26,6 +26,11 @@ except ImportError:
 
 def load_url(url, retry=2, retry_period=1, timeout=10, skip_decode=False):
     try:
+        print('URL given: ' + url)
+        if url.find('://') == -1:
+            url = 'file://' + url
+
+        print('URL used : ' + url)
         fh = urlopen(url, timeout=timeout)
     except HTTPError as e:
         if e.code == 503 and retry:
