@@ -53,8 +53,7 @@ view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_conf
 
 println "view_config_dir = " + view_config_dir.toString()
 
-def workspace_dir = new File(build.getWorkspace().toString())
-def workspace_files = workspace_dir.listFiles()
+def workspace_files = sh(script: 'ls ' + build.getWorkspace().toString(), returnStdout: true).split()
 println "Files in workspace " + workspace_dir.toString() + ": " + workspace_files.toString()
 
 def view_dir = new File(view_config_dir)
