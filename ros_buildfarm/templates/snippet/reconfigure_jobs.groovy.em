@@ -69,8 +69,8 @@ view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_conf
 println "view_config_dir = " + view_config_dir.toString()
 
 println "Calling listFiles on views_dir"
-views_dir = new File(view_config_dir)
-views = getAllFiles(views_dir)
+//views_dir = new File(view_config_dir)
+views = getAllFiles(views_config_dir)
 println "Called listFiles on views_dir"
 
 println "Files in view_config_dir " + view_config_dir.toString() + ": " + views.toString()
