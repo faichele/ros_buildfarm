@@ -51,11 +51,15 @@ skipped_views = 0
 
 def getAllFiles(rootPath) {
     def list = []
-    for (subPath in rootPath.list()) {
-        println "Ficken: " + subPath.toString()
+    //for (subPath in rootPath.list()) {
+        //println "Ficken: " + subPath.toString()
         // list << subPath.getName()
         // in case you don't want extension
         // list << FilenameUtils.removeExtension(subPath.getName())
+    //}
+    (rootPath as File).eachFile groovy.io.FileType.FILES, {
+        println "File: " + it
+        list << it
     }
     return list
 }
