@@ -6,6 +6,7 @@ import hudson.AbortException
 import hudson.model.View
 import java.io.StringBufferInputStream
 import java.io.StringWriter
+import java.nio.file.Files
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.stream.StreamSource
 import jenkins.model.Jenkins
@@ -74,8 +75,8 @@ def workspace_dir = build.getWorkspace().toString()
 def view_config_dir = "reconfigure_jobs/view_configs"
 println "workspace_dir = " + workspace_dir.toString()
 println "view_config_dir = " + view_config_dir.toString()
-views_dir = new File(workspace_dir + "/" + view_config_dir)
-if (views_dir.exists()) {
+views_dir = workspace_dir + "/" + view_config_dir
+if (Files.exists(views_dir)) {
     println("YES")
 }
 else {
