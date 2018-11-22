@@ -57,9 +57,14 @@ def getAllFiles(rootPath) {
         // in case you don't want extension
         // list << FilenameUtils.removeExtension(subPath.getName())
     //}
-    (rootPath as File).eachFile groovy.io.FileType.FILES, {
-        println "File: " + it
-        list << it
+    //(rootPath as File).eachFile groovy.io.FileType.FILES, {
+    //    println "File: " + it
+    //    list << it
+    //}
+    for (file in rootPath.listFiles())
+    {
+        println "File: " + file.toString()
+	list << file.toString()
     }
     return list
 }
@@ -77,7 +82,7 @@ else {
     println("NO")
 }
 println "Calling listFiles on views_dir"
-views = getAllFiles(views_config_dir)
+views = getAllFiles(views_dir)
 println "Called listFiles on views_dir"
 
 println "Files in view_config_dir " + view_config_dir.toString() + ": " + views.toString()
