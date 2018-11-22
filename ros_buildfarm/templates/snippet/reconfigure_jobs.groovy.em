@@ -49,20 +49,26 @@ created_views = 0
 updated_views = 0
 skipped_views = 0
 
+def getAllFiles(rootPath) {
+    def list = []
+    for (subPath in rootPath.list()) {
+        list << subPath.getName()
+        // in case you don't want extension
+        // list << FilenameUtils.removeExtension(subPath.getName())
+    }
+    return list
+}
+
 view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_configs'
 
 println "view_config_dir = " + view_config_dir.toString()
 
-views_dir = new File(view_config_dir)
 println "Calling listFiles on views_dir"
-views = views_dir.listFiles()
+views = getAllFiles(view_config_dir)
 println "Called listFiles on views_dir"
 
 println "Files in view_config_dir " + view_config_dir.toString() + ": " + views.toString()
 
-//def view_dir = new File(view_config_dir)
-//def views = view_dir.listFiles()
-//println "views = " + views.toString()
 println "Calling sort on views"
 views.sort()
 println "Called sort on views"
@@ -124,6 +130,7 @@ println '# END SUBSECTION'
 @[end if]@
 // reconfigure jobs
 println '# BEGIN SUBSECTION: reconfigure @(expected_num_jobs) jobs'
+
 created_jobs = 0
 updated_jobs = 0
 skipped_jobs = 0
