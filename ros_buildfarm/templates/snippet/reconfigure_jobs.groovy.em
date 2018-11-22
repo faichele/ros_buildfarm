@@ -52,7 +52,8 @@ skipped_views = 0
 def getAllFiles(rootPath) {
     def list = []
     for (subPath in rootPath.list()) {
-        list << subPath.getName()
+        println "Ficken: " + subPath.toString()
+        // list << subPath.getName()
         // in case you don't want extension
         // list << FilenameUtils.removeExtension(subPath.getName())
     }
