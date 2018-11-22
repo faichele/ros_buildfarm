@@ -53,16 +53,19 @@ view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_conf
 
 println "view_config_dir = " + view_config_dir.toString()
 
-def ls_script = "ls " + view_config_dir.toString() + " -1 "
-def ficken = ls_script.execute().text
-def views = ficken.split("\\r?\\n")
+views_dir = new File(view_config_dir)
+println "Calling listFiles on views_dir"
+views = views_dir.listFiles()
+println "Called listFiles on views_dir"
 
 println "Files in view_config_dir " + view_config_dir.toString() + ": " + views.toString()
 
 //def view_dir = new File(view_config_dir)
 //def views = view_dir.listFiles()
 //println "views = " + views.toString()
+println "Calling sort on views"
 views.sort()
+println "Called sort on views"
 
 if (views.size() != @(expected_num_views)) {
     println "ERROR: Found different number of view configs than expected!! " + views.size() + " is not @(expected_num_views) as expected."
