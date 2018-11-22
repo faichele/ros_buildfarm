@@ -53,12 +53,16 @@ view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_conf
 
 println "view_config_dir = " + view_config_dir.toString()
 
-def workspace_files = sh(script: 'ls ' + build.getWorkspace().toString(), returnStdout: true).split()
-println "Files in workspace " + workspace_dir.toString() + ": " + workspace_files.toString()
+def TMP_FILENAME = ".ws_files_list"
+sh "ls " + view_config_dir.toString() + " ${TMP_FILENAME}"
+def views = readFile(TMP_FILENAME).split("\\r?\\n")
+sh "rm -f ${TMP_FILENAME}"
 
-def view_dir = new File(view_config_dir)
-def views = view_dir.listFiles()
-println "views = " + views.toString()
+println "Files in view_config_dir " + view_config_dir.toString() + ": " + views.toString()
+
+//def view_dir = new File(view_config_dir)
+//def views = view_dir.listFiles()
+//println "views = " + views.toString()
 views.sort()
 
 if (views.size() != @(expected_num_views)) {
