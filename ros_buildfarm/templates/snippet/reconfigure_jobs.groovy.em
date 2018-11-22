@@ -53,7 +53,7 @@ view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_conf
 
 println "view_config_dir = " + view_config_dir.toString()
 
-def TMP_FILENAME = ".ws_files_list"
+def TMP_FILENAME = String(".ws_files_list")
 def ls_script = "ls " + view_config_dir.toString() + " > " + TMP_FILENAME.toString()
 ls_script.execute()
 def views_content = readFile TMP_FILENAME 
