@@ -56,7 +56,7 @@ println "view_config_dir = " + view_config_dir.toString()
 def TMP_FILENAME = String(".ws_files_list")
 def ls_script = "ls " + view_config_dir.toString() + " > " + TMP_FILENAME.toString()
 ls_script.execute()
-def views_content = readFile TMP_FILENAME 
+def views_content = readFile TMP_FILENAME.toString()
 def views = views_copntent.split("\\r?\\n")
 def rm_script = "rm -f " + TMP_FILENAME.toString()
 rm_script.execute()
