@@ -64,8 +64,8 @@ def getAllFiles(rootPath) {
     return list
 }
 
-view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_configs'
-
+//view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_configs'
+def view_config_dir = "./reconfigure_jobs/view_configs"
 println "view_config_dir = " + view_config_dir.toString()
 if (new File(view_config_dir).exists()) {
     println("YES")
