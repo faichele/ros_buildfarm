@@ -86,9 +86,9 @@ if (Files.exists(current_dir)) {
     }
     def home_path = Paths.get("/home")
     if (Files.exists(home_path)) {
-        DirectoryStream<Path> stream = Files.newDirectoryStream(home_path, "*")
-        for (Path path : stream) {
-            println "File in /home: " + path.getFileName().toString()
+        DirectoryStream<Path> stream2 = Files.newDirectoryStream(home_path, "*")
+        for (Path path2 : stream2) {
+            println "File in /home: " + path2.getFileName().toString()
         }
     }
 }
