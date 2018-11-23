@@ -6,6 +6,7 @@ import hudson.AbortException
 import hudson.model.View
 import java.io.StringBufferInputStream
 import java.io.StringWriter
+import java.nio.file.Path
 import java.nio.file.Files
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.stream.StreamSource
