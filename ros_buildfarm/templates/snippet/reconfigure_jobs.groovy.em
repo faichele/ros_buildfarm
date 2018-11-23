@@ -7,6 +7,7 @@ import hudson.model.View
 import java.io.StringBufferInputStream
 import java.io.StringWriter
 import java.nio.file.Path
+import java.nio.file.Paths
 import java.nio.file.Files
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.stream.StreamSource
@@ -77,7 +78,7 @@ def view_config_dir = "reconfigure_jobs/view_configs"
 println "workspace_dir = " + workspace_dir.toString()
 println "view_config_dir = " + view_config_dir.toString()
 views_dir = workspace_dir + "/" + view_config_dir
-Path views_path = new Path(views_dir)
+Path views_path = Paths.get(views_dir)
 if (Files.exists(views_path)) {
     println("YES")
 }
