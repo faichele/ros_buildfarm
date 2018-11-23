@@ -6,7 +6,6 @@ import hudson.AbortException
 import hudson.model.View
 import java.io.StringBufferInputStream
 import java.io.StringWriter
-import System
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.nio.file.Files
