@@ -67,8 +67,8 @@ while (matcher.find()) {
 def job_name = "Kdev_reconfigure-jobs"
 println "Job name: " + job_name.toString()
 
-def view_config_dir_1 = "/home/jenkins-agent/workspace/" + job_name.toString() + "/reconfigure_jobs/view_config"
-def view_config_dir_2 = "/var/lib/jenkins/workspace/" + job_name.toString() + "/reconfigure_jobs/view_config"
+def view_config_dir_1 = "/home/jenkins-agent/workspace/" + job_name.toString() + "/reconfigure_jobs/view_configs"
+def view_config_dir_2 = "/var/lib/jenkins/workspace/" + job_name.toString() + "/reconfigure_jobs/view_configs"
 
 println("view_config_dir_1: " + view_config_dir_1.toString())
 println("view_config_dir_2: " + view_config_dir_2.toString())
