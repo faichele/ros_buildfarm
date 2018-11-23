@@ -64,7 +64,7 @@ def matcher = regexp.matcher(current_build);
 while (matcher.find()) {
     println "match: " + matcher.group().toString()
 }
-def job_name = match[0][1]
+def job_name = "Kdev_reconfigure-jobs"
 println "Job name: " + job_name.toString()
 
 def view_config_dir_1 = "/home/jenkins-agent/workspace/" + job_name.toString() + "/reconfigure_jobs/view_config"
