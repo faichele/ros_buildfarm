@@ -84,11 +84,11 @@ if (Files.exists(current_dir)) {
     for (Path path : stream) {
 	println "File: " + path.getFileName().toString()
     }
-    def home_path = Paths.get("/home")
+    def home_path = Paths.get("/home/jenkins-agent")
     if (Files.exists(home_path)) {
         DirectoryStream<Path> stream2 = Files.newDirectoryStream(home_path, "*")
         for (Path path2 : stream2) {
-            println "File in /home: " + path2.getFileName().toString()
+            println "File in /home/jenkins-agent: " + path2.getFileName().toString()
         }
     }
 }
