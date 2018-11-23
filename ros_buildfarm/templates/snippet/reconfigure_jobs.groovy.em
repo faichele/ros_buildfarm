@@ -86,6 +86,13 @@ if (Files.exists(view_config_path_2)) {
     view_config_dir = view_config_dir_2
 }
 
+def view_configs_path = Paths.get(view_config_dir)
+DirectoryStream<Path> stream2 = Files.newDirectoryStream(home_path, "*")
+for (Path path2 : stream2) {
+    println "Adding file: " + path2.getFileName().toString()
+    views << view_config_dir + "/" + path2.getFileName().toString()
+}
+
 println "Files in view_config_dir " + view_config_dir.toString() + ": " + views.toString()
 
 println "Calling sort on views"
