@@ -47,6 +47,9 @@ RUN python3 -u /tmp/wrapper_scripts/apt.py update-install-clean -q -y git python
 RUN echo "@now_str"
 RUN python3 -u /tmp/wrapper_scripts/apt.py update
 
+RUN echo "deb http://packages.ros.org/ros/ubuntu xenial main" > /etc/apt/sources.list.d/ros-latest.list
+RUN apt-get update
+
 ENV ROSDISTRO_INDEX_URL @rosdistro_index_url
 
 @(TEMPLATE(
