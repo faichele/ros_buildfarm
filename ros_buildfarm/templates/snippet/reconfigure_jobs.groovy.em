@@ -56,9 +56,10 @@ skipped_views = 0
 
 def views = []
 def current_build = Thread.currentThread().toString()
-println "FICKEN current_build: " + current_build.toString()
-def regexp = ".+?/job/([^/]+)/.*"
+println "current_build: " + current_build.toString()
+def regexp = ".+? executing ([^/]+).*"
 def match = build =~ regexp
+println "match: " + match.toString()
 def job_name = match[0][1]
 println "Job name: " + job_name.toString()
 
