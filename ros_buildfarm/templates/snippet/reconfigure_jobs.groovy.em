@@ -74,16 +74,23 @@ def getAllFiles(rootPath) {
 
 //view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_configs'
 def workspace_dir = build.getWorkspace().toString()
+def workspace_path = Paths.get(workspace_dir)
+if (Files.exists(workspace_path)) {
+    println("workspace_dir exists: YES")
+}
+else {
+    println("workspace_dir exists: NO")
+}
 def view_config_dir = "reconfigure_jobs/view_configs"
 println "workspace_dir = " + workspace_dir.toString()
 println "view_config_dir = " + view_config_dir.toString()
 views_dir = workspace_dir + "/" + view_config_dir
 Path views_path = Paths.get(views_dir)
 if (Files.exists(views_path)) {
-    println("YES")
+    println("view_config_dir exists: YES")
 }
 else {
-    println("NO")
+    println("view_config_dir exists: NO")
 }
 println "Calling listFiles on views_dir"
 views = getAllFiles(views_dir)
