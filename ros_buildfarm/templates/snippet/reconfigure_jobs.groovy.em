@@ -54,78 +54,6 @@ created_views = 0
 updated_views = 0
 skipped_views = 0
 
-def getAllFiles(rootPath) {
-    def list = []
-    //for (subPath in rootPath.list()) {
-        //println "Ficken: " + subPath.toString()
-        // list << subPath.getName()
-        // in case you don't want extension
-        // list << FilenameUtils.removeExtension(subPath.getName())
-    //}
-    //(rootPath as File).eachFile groovy.io.FileType.FILES, {
-    //    println "File: " + it
-    //    list << it
-    //}
-    for (file in rootPath.listFiles())
-    {
-        println "File: " + file.toString()
-	list << file.toString()
-    }
-    return list
-}
-
-//view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_configs'
-/*def current_path = Paths.get("")
-def current_dir = current_path.toAbsolutePath()
-println "Current directory: " + current_dir.toString()
-if (Files.exists(current_dir)) {
-    println("current_dir exists: YES")
-    DirectoryStream<Path> stream = Files.newDirectoryStream(current_dir, "*")
-    for (Path path : stream) {
-	println "File: " + path.getFileName().toString()
-    }
-    def home_path = Paths.get("/home/jenkins-agent")
-    if (Files.exists(home_path)) {
-        DirectoryStream<Path> stream2 = Files.newDirectoryStream(home_path, "*")
-        for (Path path2 : stream2) {
-            println "File in /home/jenkins-agent: " + path2.getFileName().toString()
-        }
-    }
-    def var_path = Paths.get("/var/lib/jenkins")
-    if (Files.exists(var_path)) {
-        DirectoryStream<Path> stream3 = Files.newDirectoryStream(var_path, "*")
-        for (Path path3 : stream3) {
-            println "File in /var/lib/jenkins: " + path3.getFileName().toString()
-        }
-    }
-}
-else {
-    println("current_dir exists: NO")
-}
-def workspace_dir = build.getWorkspace().toString()
-def workspace_path = Paths.get(workspace_dir)
-if (Files.exists(workspace_path)) {
-    println("workspace_dir exists: YES")
-}
-else {
-    println("workspace_dir exists: NO")
-}
-def view_config_dir = "reconfigure_jobs/view_configs"
-println "workspace_dir = " + workspace_dir.toString()
-println "view_config_dir = " + view_config_dir.toString()
-def views_dir = "/reconfigure_jobs/view_configs"
-println "views_dir = " + views_dir.toString()
-Path views_path = Paths.get(views_dir)
-if (Files.exists(views_path)) {
-    println("view_config_dir exists: YES")
-}
-else {
-    println("view_config_dir exists: NO")
-}
-println "Calling listFiles on views_dir"
-views = getAllFiles(views_dir)
-println "Called listFiles on views_dir"*/
-
 def views = []
 def job_name = System.getenv("JOB_NAME")
 println "Job name: " + job_name.toString()
@@ -137,9 +65,11 @@ def view_config_path_2 = Paths.get(view_config_dir_2.toString())
 
 if (Files.exists(view_config_path_1)) {
     println("Got valid view_config_path_1: " + view_config_dir_1.toString())
+    view_config_dir = view_config_dir_1
 }
 if (Files.exists(view_config_path_2)) {
     println("Got valid view_config_path_2: " + view_config_dir_2.toString())
+    view_config_dir = view_config_dir_2
 }
 
 println "Files in view_config_dir " + view_config_dir.toString() + ": " + views.toString()
