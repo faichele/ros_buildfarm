@@ -80,7 +80,7 @@ def current_dir = current_path.toAbsolutePath()
 println "Current directory: " + current_dir.toString()
 if (Files.exists(current_dir)) {
     println("current_dir exists: YES")
-    DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*")
+    DirectoryStream<Path> stream = Files.newDirectoryStream(current_dir, "*")
     for (Path path : stream) {
 	println "File: " + path.getFileName().toString()
     }
