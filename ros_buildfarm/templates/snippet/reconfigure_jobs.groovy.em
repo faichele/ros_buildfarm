@@ -73,7 +73,7 @@ def getAllFiles(rootPath) {
 }
 
 //view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_configs'
-def current_path = Paths.get()
+def current_path = Paths.get("")
 def current_dir = current_path.toAbsolutePath()
 println "Current directory: " + current_dir.toString()
 if (Files.exists(current_dir)) {
