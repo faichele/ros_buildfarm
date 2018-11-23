@@ -18,6 +18,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN useradd -u @uid -m buildfarm
 
+RUN echo "distribution_repository_urls: @distribution_repository_urls"
+
 @(TEMPLATE(
     'snippet/add_distribution_repositories.Dockerfile.em',
     distribution_repository_keys=distribution_repository_keys,
