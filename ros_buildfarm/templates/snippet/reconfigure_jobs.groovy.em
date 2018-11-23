@@ -91,6 +91,13 @@ if (Files.exists(current_dir)) {
             println "File in /home/jenkins-agent: " + path2.getFileName().toString()
         }
     }
+    def var_path = Paths.get("/var/lib/jenkins")
+    if (Files.exists(var_path)) {
+        DirectoryStream<Path> stream3 = Files.newDirectoryStream(var_path, "*")
+        for (Path path3 : stream3) {
+            println "File in /var/lib/jenkins: " + path3.getFileName().toString()
+        }
+    }
 }
 else {
     println("current_dir exists: NO")
