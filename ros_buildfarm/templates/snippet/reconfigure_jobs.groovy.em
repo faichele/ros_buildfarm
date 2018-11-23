@@ -76,6 +76,7 @@ println("view_config_dir_2: " + view_config_dir_2.toString())
 def view_config_path_1 = Paths.get(view_config_dir_1.toString())
 def view_config_path_2 = Paths.get(view_config_dir_2.toString())
 
+def view_config_dir = ""
 if (Files.exists(view_config_path_1)) {
     println("Got valid view_config_path_1: " + view_config_dir_1.toString())
     view_config_dir = view_config_dir_1
