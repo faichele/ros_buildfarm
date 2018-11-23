@@ -87,7 +87,7 @@ if (Files.exists(view_config_path_2)) {
 }
 
 def view_configs_path = Paths.get(view_config_dir)
-DirectoryStream<Path> stream2 = Files.newDirectoryStream(home_path, "*")
+DirectoryStream<Path> stream2 = Files.newDirectoryStream(view_configs_path, "*")
 for (Path path2 : stream2) {
     println "Adding file: " + path2.getFileName().toString()
     views << view_config_dir + "/" + path2.getFileName().toString()
