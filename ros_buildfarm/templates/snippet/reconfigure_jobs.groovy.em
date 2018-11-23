@@ -57,7 +57,7 @@ skipped_views = 0
 def views = []
 def current_build = Thread.currentThread().toString()
 println "current_build: " + current_build.toString()
-def regexp = ".+?/ executing /([^/]+)/.*"
+def regexp = ".*executing (.+).*"
 def match = build =~ regexp
 println "match: " + match.toString()
 def job_name = match[0][1]
