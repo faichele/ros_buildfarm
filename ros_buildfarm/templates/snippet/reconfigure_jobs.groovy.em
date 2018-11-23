@@ -11,6 +11,8 @@ import java.nio.file.Paths
 import java.nio.file.Files
 import java.nio.file.FileSystems
 import java.nio.file.DirectoryStream
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.stream.StreamSource
 import jenkins.model.Jenkins
@@ -57,9 +59,11 @@ skipped_views = 0
 def views = []
 def current_build = Thread.currentThread().toString()
 println "current_build: " + current_build.toString()
-def regexp = ".*executing (.+).*"
-def match = build =~ regexp
-println "match: " + match.toString()
+def regexp = Pattern.compile(".*executing (.+).*")
+def matcher = regexp.matcher(current_build);
+while (matcher.find()) {
+    println "match: " + matcher.group().toString()
+}
 def job_name = match[0][1]
 println "Job name: " + job_name.toString()
 
