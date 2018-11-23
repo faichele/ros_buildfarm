@@ -6,6 +6,7 @@ import hudson.AbortException
 import hudson.model.View
 import java.io.StringBufferInputStream
 import java.io.StringWriter
+import System
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.nio.file.Files
@@ -75,7 +76,7 @@ def getAllFiles(rootPath) {
 }
 
 //view_config_dir = build.getWorkspace().toString() + '/reconfigure_jobs/view_configs'
-def current_path = Paths.get("")
+/*def current_path = Paths.get("")
 def current_dir = current_path.toAbsolutePath()
 println "Current directory: " + current_dir.toString()
 if (Files.exists(current_dir)) {
@@ -124,7 +125,23 @@ else {
 }
 println "Calling listFiles on views_dir"
 views = getAllFiles(views_dir)
-println "Called listFiles on views_dir"
+println "Called listFiles on views_dir"*/
+
+def views = []
+def job_name = System.getenv("JOB_NAME")
+println "Job name: " + job_name.toString()
+def view_config_dir_1 = "/home/jenkins-agent/workspace/" + job_name.toString() + "/reconfigure_jobs/view_config"
+def view_config_dir_2 = "/var/lib/jenkins/workspace/" + job_name.toString() + "/reconfigure_jobs/view_config"
+
+def view_config_path_1 = Paths.get(view_config_dir_1.toString())
+def view_config_path_2 = Paths.get(view_config_dir_2.toString())
+
+if (Files.exists(view_config_path_1)) {
+    println("Got valid view_config_path_1: " + view_config_dir_1.toString())
+}
+if (Files.exists(view_config_path_2)) {
+    println("Got valid view_config_path_2: " + view_config_dir_2.toString())
+}
 
 println "Files in view_config_dir " + view_config_dir.toString() + ": " + views.toString()
 
