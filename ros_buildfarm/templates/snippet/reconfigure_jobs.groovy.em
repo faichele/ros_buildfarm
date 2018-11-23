@@ -9,6 +9,8 @@ import java.io.StringWriter
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.nio.file.Files
+import java.nio.file.FileSystems
+import java.nio.file.DirectoryStream
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.stream.StreamSource
 import jenkins.model.Jenkins
@@ -78,6 +80,10 @@ def current_dir = current_path.toAbsolutePath()
 println "Current directory: " + current_dir.toString()
 if (Files.exists(current_dir)) {
     println("current_dir exists: YES")
+    DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*")
+    for (Path path : stream) {
+	println "File: " + path.getFileName().toString()
+    }
 }
 else {
     println("current_dir exists: NO")
