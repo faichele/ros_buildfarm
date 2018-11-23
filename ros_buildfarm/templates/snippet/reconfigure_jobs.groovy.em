@@ -93,7 +93,7 @@ else {
 def view_config_dir = "reconfigure_jobs/view_configs"
 println "workspace_dir = " + workspace_dir.toString()
 println "view_config_dir = " + view_config_dir.toString()
-def views_dir = current_path + view_config_dir
+def views_dir = current_path.toString() + view_config_dir.toString()
 println "views_dir = " + views_dir.toString()
 Path views_path = Paths.get(views_dir)
 if (Files.exists(views_path)) {
