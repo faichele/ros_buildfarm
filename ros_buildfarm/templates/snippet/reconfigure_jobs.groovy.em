@@ -55,10 +55,17 @@ updated_views = 0
 skipped_views = 0
 
 def views = []
-def job_name = System.getenv("JOB_NAME")
+def current_build = Thread.currentThread().toString()
+def regexp = ".+?/job/([^/]+)/.*"
+def match = build =~ regexp
+def job_name = match[0][1]
 println "Job name: " + job_name.toString()
+
 def view_config_dir_1 = "/home/jenkins-agent/workspace/" + job_name.toString() + "/reconfigure_jobs/view_config"
 def view_config_dir_2 = "/var/lib/jenkins/workspace/" + job_name.toString() + "/reconfigure_jobs/view_config"
+
+println("view_config_dir_1: " + view_config_dir_1.toString())
+println("view_config_dir_2: " + view_config_dir_2.toString())
 
 def view_config_path_1 = Paths.get(view_config_dir_1.toString())
 def view_config_path_2 = Paths.get(view_config_dir_2.toString())
