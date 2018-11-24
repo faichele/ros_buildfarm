@@ -16,8 +16,7 @@ RUN echo "@('\\n'.join(key.splitlines()))" > /tmp/keys/@(i).key && apt-key add /
 @[end for]@
 @{
 default_repositories = ("http://packages.ros.org/ros/ubuntu xenial main")
-default_repository_keys = (""-----BEGIN PGP PUBLIC KEY BLOCK-----
-
+default_repository_keys = ("-----BEGIN PGP PUBLIC KEY BLOCK-----
 mQGiBEsy5KkRBADJbDSISoamRM5AA20bfAeBuhhaI+VaiCVcxw90sq9AI5lIc42F
 WzM2acm8yplqWiehAqOLKd+iIrqNGZ+VavZEPTx7o06UZUMRoPBiTFaCwrQ5avKz
 lt7ij8PRMVWNrJ7A2lDYXfFQVV1o3Xo06qVnv0KLLUmiur0LBu4H/oTH3wCgt+/I
@@ -48,7 +47,7 @@ x9o=
 }@
 
 @[for i, key in enumerate(default_repository_keys)]@
-RUN echo "@('\\n'.join(key.splitlines()))" > /tmp/keys/@(i+1).key && apt-key add /tmp/keys/@(i+1).key
+RUN echo "@('\\n'.join(key.splitlines()))" > /tmp/keys/@(i+10).key && apt-key add /tmp/keys/@(i+10).key
 @[end for]@
 
 @[for url in distribution_repository_urls]@
