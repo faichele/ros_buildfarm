@@ -182,7 +182,7 @@ if pull_request:
         'echo "# BEGIN SECTION: Build Dockerfile - build and install"',
         '# build and run build_and_install Dockerfile',
         'cd $WORKSPACE/docker_build_and_install',
-        'echo "Pulling base image for devel job now"',
+        'echo "Pulling base image for devel job now and here"',
         'python3 -u $WORKSPACE/ros_buildfarm/scripts/misc/docker_pull_baseimage.py',
         'docker build --force-rm -t devel_build_and_install.%s_%s .' % (rosdistro_name, source_repo_spec.name.lower()),
         'echo "# END SECTION"',
