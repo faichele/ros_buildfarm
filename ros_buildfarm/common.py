@@ -69,7 +69,7 @@ def get_repositories_and_script_generating_key_files(
     repository_keys = []
     custom_rosdep_urls = []
 
-    repository_keys.append("-----BEGIN PGP PUBLIC KEY BLOCK-----
+    repository_keys.append("""-----BEGIN PGP PUBLIC KEY BLOCK-----
 mQGiBEsy5KkRBADJbDSISoamRM5AA20bfAeBuhhaI+VaiCVcxw90sq9AI5lIc42F
 WzM2acm8yplqWiehAqOLKd+iIrqNGZ+VavZEPTx7o06UZUMRoPBiTFaCwrQ5avKz
 lt7ij8PRMVWNrJ7A2lDYXfFQVV1o3Xo06qVnv0KLLUmiur0LBu4H/oTH3wCgt+/I
@@ -96,7 +96,7 @@ YmRFWHXt3rTkMlQSpxCsB0fAYfrwEqqISQQYEQIACQUCSzLkrgIbDAAKCRBVI7ru
 sB+hFpryAJ9qNz3h3ijt9TkAV0CHufsPT6Cl4gCglfg7tJn2lsSF3HTpoDDO1Fgg
 x9o=
 =AGYp
------END PGP PUBLIC KEY BLOCK-----")
+-----END PGP PUBLIC KEY BLOCK-----""")
 
     repository_urls.append("http://packages.ros.org/ros/ubuntu")
 
