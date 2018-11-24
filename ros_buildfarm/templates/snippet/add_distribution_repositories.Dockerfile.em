@@ -14,15 +14,13 @@ RUN for i in 1 2 3; do apt-get update && apt-get install -q -y gnupg && apt-get 
 @[for i, key in enumerate(distribution_repository_keys)]@
 RUN echo "@('\\n'.join(key.splitlines()))" > /tmp/keys/@(i).key && apt-key add /tmp/keys/@(i).key
 @[end for]@
-@{
-default_repositories = ("http://packages.ros.org/ros/ubuntu xenial main")
-}@
 
 @[if os_name == 'debian' and os_code_name not in debian_before_stretch or os_name == 'ubuntu' and os_code_name not in ubuntu_before_bionic]@
 @# In Debian Stretch apt doesn't depend on gnupg anymore
 @# https://anonscm.debian.org/cgit/apt/apt.git/commit/?id=87d468fe355c87325c943c40043a0bb236b2407f
 RUN for i in 1 2 3; do apt-get update && apt-get install -q -y wget && apt-get clean && break || if [[ $i < 3 ]]; then sleep 5; else false; fi; done
 RUN wget -q https://github.com/ros/rosdistro/blob/master/ros.key > /tmp/ros_upstream.key && apt-key add /tmp/ros_upstream.key
+RUN echo "deb http://packages.ros.org/ros/ubuntu @os_code_name main" | tee -a /etc/apt/sources.list.d/buildfarm.list
 @[end if]@
 
 @[for url in distribution_repository_urls]@
@@ -30,10 +28,6 @@ RUN echo deb @url @os_code_name main | tee -a /etc/apt/sources.list.d/buildfarm.
 @[if add_source and url == target_repository]@
 RUN echo deb-src @url @os_code_name main | tee -a /etc/apt/sources.list.d/buildfarm.list
 @[end if]@
-@[end for]@
-
-@[for url in default_repositories]@
-RUN echo deb @url | tee -a /etc/apt/sources.list.d/buildfarm.list
 @[end for]@
 
 @# On Ubuntu Trusty a newer version of dpkg is required to install Debian packages created by stdeb on newer distros
