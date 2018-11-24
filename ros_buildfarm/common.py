@@ -70,6 +70,7 @@ def get_repositories_and_script_generating_key_files(
     custom_rosdep_urls = []
 
     repository_keys.append("""-----BEGIN PGP PUBLIC KEY BLOCK-----
+
 mQGiBEsy5KkRBADJbDSISoamRM5AA20bfAeBuhhaI+VaiCVcxw90sq9AI5lIc42F
 WzM2acm8yplqWiehAqOLKd+iIrqNGZ+VavZEPTx7o06UZUMRoPBiTFaCwrQ5avKz
 lt7ij8PRMVWNrJ7A2lDYXfFQVV1o3Xo06qVnv0KLLUmiur0LBu4H/oTH3wCgt+/I
